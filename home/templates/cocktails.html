@@ -1,0 +1,21 @@
+{% extends 'index.html' %} 
+{% block title %}Cocktails{% endblock %}
+{% load static %} 
+{% block content %}
+
+<!-- start of all cocktails section -->
+<div class="container-fluid margBot padd">
+  <div class="row">
+    {% for cocktail in cocktails %}
+    <div class="col-6 col-lg-3 margBot">
+      <a href="{% url 'cocktail' name=cocktail.recipe_name %}" class="text-center">
+        <img src="{{cocktail.recipe_image1.url}}" alt="..." class="w-100" />
+        <h3 class="linkStyle mt-3">{{ cocktail.recipe_name }}</h3>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- end of all cocktails section -->
+
+{% endblock %}

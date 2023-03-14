@@ -1,0 +1,24 @@
+{% extends 'index.html' %} 
+{% block title %}Videos{% endblock %}
+{% load static %} 
+{% block content %}
+
+<!-- start of videos section -->
+<div class="container-fluid margBot padd">
+  <div class="row">
+    {% for video in videos %}
+    <div class="col-6 col-lg-3 margBot">
+      <a href="{{video.video_url}}" target="_blank" class="text-center">
+        <div class="image-container">
+          <img src="https://img.youtube.com/vi/{{ video.url_id }}/0.jpg" alt="..." class="w-100" />
+          <i class="icon fa-brands fa-youtube"></i>
+        </div>
+        <h3 class="linkStyle mt-3 video-title">{{ video.video_title }}</h3>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- end of videos sections -->
+
+{% endblock %}

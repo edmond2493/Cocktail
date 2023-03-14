@@ -1,0 +1,193 @@
+{% extends 'index.html' %} 
+{% block title %}1 ou 2 Cocktail{% endblock %}
+{% load static %} 
+{% block content %}
+<!-- start of te banner -->
+<div class="container-fluid margBot">
+  <div class="row">
+    <div class="col-12 col-lg-6 px-0 mx-0  d-flex flex-column justify-content-around color">
+      <div class="row px-5 py-2">
+        <div class="col-12">
+          <h1>{{ random_cocktail.recipe_name }}</h1>
+        </div>
+      </div>
+      <div class="row px-5 py-2">
+        <div class="col-6 d-flex flex-column justify-content-between align-items-start">
+          <p>{{ random_cocktail.recipe_description1|truncatewords:"50" }}</p>
+          <a href="{% url 'cocktail' name=random_cocktail.recipe_name %}" class="linkStyle">Find out more</a>
+        </div>
+        <div class="col-6" style="height: 250px">
+          <img src="{{ random_cocktail.recipe_image1.url }}" alt="..." style="width: 100%; height: 100%; object-fit: cover" />
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 px-0 mx-0" style="height: 700px">
+      <img src="{{ random_cocktail.recipe_image2.url }}" alt="..." class="h-100 w-100 object-cover" />
+    </div>
+  </div>
+</div>
+<!-- end of the banner -->
+<!-- start of the cocktail recepies -->
+<div class="container-fluid d-flex flex-column align-items-start padd margBot" id="cRecepies">
+  <h2>Cocktail recipes</h2>
+  <p>No matter the occasion or time of day, we have a cocktail to suggest. Discover our cocktail recipes that are easy to make at home with accessible alcohols and ingredients.</p>
+  <a class="linkStyle" href="{% url 'cocktails' %}">View all recepies</a>
+</div>
+<!-- end of the cocktail recepies -->
+<!-- start of the owl carousel for random items -->
+<div class="container-fluid padd margBot">
+  <div class="row">
+    <div class="col-12">
+      <div class="owl-carousel owl-theme">
+        {% for owl in owl_cocktail %}
+        <div class="owlDiv text-center">
+          <div class="card">
+            <img class="card-img" src="{{ owl.recipe_image1.url }}" alt="Card image" />
+            <div class="card-img-overlay d-flex flex-column justify-content-between align-items-center">
+              <h5 class="card-text text-white"></h5>
+              <h2 class="card-text text-white">{{ owl.recipe_name }}</h2>
+              <a href="{% url 'cocktail' name=owl.recipe_name %}" class="linkStyle2">Learn more</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of the owl carousel for random items -->
+<!-- start of the food section -->
+<div class="container-fluid margBot padd">
+  <div class="card foodCard">
+    <img class="card-img foodCard object-cover" src="{{ random_food.food_image1.url }}" alt="Card image" />
+    <div class="card-img-overlay d-flex flex-row justify-content-between align-items-end">
+      <h2 class="card-text text-white">{{random_food.food_name}}</h2>
+      <a href="{% url 'food' name=random_food.food_name %}" class="linkStyle fw-bolder">Learn more</a>
+    </div>
+  </div>
+</div>
+<!-- end of the food section -->
+<!-- start of the book secton -->
+<div class="container-fluid margBot padd">
+  <div class="row">
+    <div class="col-12 col-lg-6 d-flex flex-column justify-content-end bookDesc color">
+      <div>
+        <a href="" class="linkStyle">BUY THE BOOK</a>
+        <h2>{{ random_book.book_name }}</h2>
+        <p>{{ random_book.book_description_1|truncatewords:"50" }}</p>
+        <a href="{% url 'book' name=random_book.book_name %}" class="linkStyle">Find out more</a>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 d-flex flex-row justify-content-center align-items-center bookImg">
+      <img src="{{ random_book.book_image_1_2.url }}" alt="book" class="w-100 object-cover" />
+    </div>
+  </div>
+</div>
+<!-- end of the book section -->
+<!-- start of the alcohol free section -->
+<div class="container-fluid margBot padd">
+  <div class="row">
+    <div class="col-6 alcoholFreeInfo">
+      <div class="alcoholFreeInfo1">
+        <a href="" class="linkStyle2 afiSpace">Featured Feature</a>
+        <hr />
+        <h2 class="afiSpace">The best Quebec alcohol-free gins and why</h2>
+      </div>
+      <div class="alcoholFreeInfo2">
+        <p class="afiSpace">Alcohol-free spirits are popular in Quebec and elsewhere in the world!</p>
+        <a href="{% url 'search' %}?searchBar='alcohol free'" class="linkStyle2 afiSpace"> See everything </a>
+      </div>
+    </div>
+    <div class="col-6 alcoholFreeImg">
+      <img src="../../static/media/alcohol free 2.jpg" alt="..." />
+    </div>
+  </div>
+</div>
+<!-- end of the alcohol free section -->
+<!-- start of articles section -->
+<div class="container-fluid padd margBot">
+  <div class="row">
+    <div class="col-12 articleTitle">
+      <h2 class="text-center">All hot, but above all very cold: our latest artcles</h2>
+    </div>
+  </div>
+  <div class="row">
+    {% for article in random_articles %}
+    <div class="col-6 col-lg-3">
+      <div class="all-articles d-flex flex-column align-items-center justify-content-between w-100 my-5 my-lg-0">
+        <div class="w-100">
+          <a href="{% url 'article' name=article.article_title %}">
+            <img src="{{ article.article_image.url }}" class="w-100 object-cover" alt="..." />
+          </a>
+          <h5 class="text-center my-2">{{ article.article_title }}</h5>
+        </div>
+        <div class="d-flex flex-column align-items-center justify-content-between w-100">
+          <a href="{% url 'article' name=article.article_title %}" class="linkStyle">Find out more</a>
+          <hr class="w-100" />
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="col-3 d-flex flex-column align-items-center justify-content-center">
+      <a href="{% url 'articles' %}" class="linkStyle">View all articles</a>
+    </div>
+  </div>
+</div>
+<!-- end of articles section -->
+<!-- start of the video secton -->
+<div class="container-fluid margBot">
+  <div class="row">
+    <div class="col-12 d-flex flex-column align-items-center videoSec1 px-0">
+      <div class="d-flex videoLinks">
+        <a href="https://www.youtube.com/channel/UC3w14ld4eqhtwZM4W1LMTFQ" target="_blank" class="linkStyle2">Youtube</a>
+        <a href="https://www.instagram.com/1ou2cocktails/channel/?hl=en" target="_blank" class="linkStyle2">IGTV</a>
+        <a href="https://www.facebook.com/1ou2cocktails/videos" target="_blank" class="linkStyle2">Facebook Watch</a>
+      </div>
+      <h2>Videos</h2>
+      <p class="text-center aw-550">
+        Master the art of cocktails with our video content. Discover our best recipes, our pro tips, our impressions of new products and savor privileged encounters with the craftsmen who make us
+        vibrate.
+      </p>
+      <a href="" class="linkStyle2">To drink it all (oops see)</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 px-0">
+      <iframe
+        width="100%"
+        height="800px"
+        src="https://www.youtube.com/embed/{{ url_id }}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+  <div class="row videoSec3 px-0">
+    <div class="col-4 px-0 videosec3-1 border border-white">
+      <div class="row d-flex flex-column justify-content-around">
+        <div class="col-12">
+          <h2 class="text-light">Signed web series 1 or 2 Cocktails</h2>
+        </div>
+        <div class="col-12">
+          <p class="text-light videoText">Be inspired by our web series, ranging from tutorial capsules to documentaries, 1 or 2 Cocktails offers you fresh digital content to watch and review.</p>
+          <a href="{% url 'videos' %}" class="linkStyle2">To drink it all (oops see)</a>
+        </div>
+      </div>
+    </div>
+    {% for video in random_videos %}
+    <div class="col-4 px-0 border border-white">
+      <a href="{{video.video_url}}" target="_blank" class="text-center">
+        <div class="image-container">
+          <img src="https://img.youtube.com/vi/{{ video.url_id }}/0.jpg" alt="..." class="object-cover w-100" />
+          <i class="icon fa-brands fa-youtube"></i>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- end of the video section -->
+
+{% endblock %}

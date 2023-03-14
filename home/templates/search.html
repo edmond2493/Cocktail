@@ -1,0 +1,120 @@
+{% extends 'index.html' %} 
+{% block title %}Search "{{ searchBar }}"{% endblock %}
+{% load static %} 
+{% block content %}
+
+<h1 class="text-center display-5 margBot" >Search result</h1>
+
+<div class="margBot px-2 px-lg-5" id="accordion">
+<!-- start of the searched cocktails -->
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          <h1 class="linkStyle text-center">Cocktails "{{ cocktails|length }}"</h1>
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
+      <div class="card-body px-0 px-lg-3">
+        <!-- start of the searched cocktails -->
+        <div class="container-fluid margBot">
+          <div class="row">
+            {% if cocktails %} 
+            <div class="col-12">
+                <h1>{{ cocktails|length }} cocktail item found with "{{ searchBar }}"</h1>
+            </div>
+            {% for cocktail in cocktails %}
+            <div class="col-6 col-lg-3 margBot">
+              <a href="{% url 'cocktail' name=cocktail.recipe_name %}" class="text-center">
+                <img src="{{cocktail.recipe_image1.url}}" alt="..." class="w-100 " />
+                <h3 class="linkStyle mt-3 hide-text w-100">{{ cocktail.recipe_name }}</h3>
+              </a>
+            </div>
+            {% endfor %} 
+            {% else %}
+            <h1>0 cocktails item found with "{{ searchBar }}"</h1>
+            {% endif %}
+          </div>
+        </div>
+        <!-- end of the searched cocktails -->
+      </div>
+    </div>
+  </div>
+<!-- end of the searched cocktails -->
+<!-- start of the searched foods -->
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <h1 class="linkStyle">Foods "{{ foods|length }}"</h1>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+      <div class="card-body px-0 px-lg-3">
+        <!-- start of the searched foods -->
+        <div class="container-fluid margBot">
+          <div class="row">
+            {% if foods %} 
+            <div class="col-12 my-3">
+                <h1>{{ foods|length }} food item found with "{{ searchBar }}"</h1>
+            </div>
+            {% for food in foods %}
+            <div class="col-6 col-lg-3 margBot">
+              <a href="{% url 'food' name=food.food_name %}" class="text-center">
+                <img src="{{food.food_image1.url}}" alt="..." class="w-100" />
+                <h3 class="linkStyle mt-3 hide-text w-100">{{ food.food_name }}</h3>
+              </a>
+            </div>
+            {% endfor %} 
+            {% else %}
+            <h1>0 food item found with "{{ searchBar }}"</h1>
+            {% endif %}
+          </div>
+        </div>
+        <!-- end of the searched foods -->
+      </div>
+    </div>
+  </div>
+<!-- end of the searched foods -->
+<!-- start of the searched articles -->
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <h1 class="linkStyle">Articles "{{ articles|length }}"</h1>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
+      <div class="card-body px-0 px-lg-3">
+        <!-- start of the searched foods -->
+        <div class="container-fluid margBot">
+          <div class="row">
+            {% if articles %} 
+            <div class="col-12 my-3">
+                <h1>{{ articles|length }} article item found with "{{ searchBar }}"</h1>
+            </div>
+            {% for article in articles %}
+            <div class="all-articles col-6 col-lg-3 margBot">
+              <a href="{% url 'article' name=article.article_title %}" class="text-center">
+                <img src="{{article.article_image.url}}" alt="..." class="w-100 object-cover" />
+                <h3 class="linkStyle mt-3 hide-text w-100">{{ article.article_title }}</h3>
+              </a>
+            </div>
+            {% endfor %} 
+            {% else %}
+            <h1>0 article item found with "{{ searchBar }}"</h1>
+            {% endif %}
+          </div>
+        </div>
+        <!-- end of the searched foods -->
+      </div>
+    </div>
+  </div>
+<!-- end of the searched articles  -->
+</div>
+
+{% endblock %}

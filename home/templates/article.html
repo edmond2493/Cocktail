@@ -1,0 +1,71 @@
+{% extends 'index.html' %}
+{% block title %}Article{% endblock %} 
+{% load static %} 
+{% block content %}
+
+<!-- start of the main article section -->
+<div class="container-fluid padd margBot">
+  <div class="row" id="article-main">
+    <div class="col-12 col-lg-6 d-flex flex-column justify-content-evenly justify-content-lg-between color">
+      <div class="col-12 text-center py-lg-5">
+        <a href="{% url 'home' %}" class="linkStyle small">1 or 2 cocktails</a> - <a href="{% url 'articles' %}" class="linkStyle small">Articles</a> - {{article.article_title}}
+      </div>
+      <h1 class="px-lg-5 py-lg-5 display-2">{{ article.article_title }}</h1>
+    </div>
+    <div class="col-12 col-lg-6 h-100px">
+      <img src="{{ article.article_image.url }}" class="w-100 h-100 object-cover" alt="..." />
+    </div>
+  </div>
+</div>
+<!-- end of the main article section -->
+<!-- start of the article sections section -->
+<div class="container-fluid px-4 margBot">
+  <div class="row d-flex flex-column align-items-center">
+    <div class="col-12 col-lg-6">
+        {% for section in article.articlesection_set.all %}
+        {% if section.section_title %}
+        <h2 class="my-5">{{ section.section_title }}</h2>
+        {% endif %}
+        {% if section.section_description %}
+        <p class="px-2 my-4">{{ section.section_description }}</p>
+        {% endif %}
+        {% if section.section_image %}
+        <img src="{{ section.section_image.url }}" class="w-100 my-2" alt="..." />
+        {% endif %}
+        <hr>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+<!-- end of the article sections section -->
+<!-- start of the suggestion section -->
+<div class="container-fluid padd margBot">
+  <div class="row">
+    <div class="col-12 articleTitle">
+      <h2 class="text-center">All hot, but above all very cold: our latest artcles</h2>
+    </div>
+  </div>
+  <div class="row">
+    {% for article in suggestions %}
+    <div class="col-6 col-lg-3">
+      <div class="all-articles d-flex flex-column align-items-center justify-content-between w-100 my-5 my-lg-0">
+        <div class="w-100">
+          <a href="{% url 'article' name=article.article_title %}">
+            <img src="{{ article.article_image.url }}" class="w-100 object-cover" alt="..." />
+          </a>
+          <h5 class="text-center my-2">{{ article.article_title }}</h5>
+        </div>
+        <div class="d-flex flex-column align-items-center justify-content-between w-100">
+          <a href="{% url 'article' name=article.article_title %}" class="linkStyle">Find out more</a>
+          <hr class="w-100" />
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="col-3 articlesWidth2 d-flex flex-column align-items-center justify-content-center">
+      <a href="{% url 'articles' %}" class="linkStyle">View all articles</a>
+    </div>
+  </div>
+</div>
+<!-- end of the suggestion section -->
+{% endblock %}

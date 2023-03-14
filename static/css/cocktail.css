@@ -1,0 +1,510 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.padd {
+  padding: 0 40px !important;
+}
+.margBot {
+  margin-bottom: 60px !important;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.linkStyle {
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  color: black;
+}
+
+.linkStyle:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.linkStyle:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  width: 0; /* set the initial width to zero */
+  height: 1px;
+  background-color: black;
+  transition: width 0.3s; /* add a transition effect to the width property */
+}
+
+.linkStyle:hover:after {
+  width: 100%; /* set the width to 100% on hover */
+  right: initial; /* set the right property to zero on hover */
+  left: 0; /* reset the left property on hover */
+}
+
+.linkStyle2 {
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  color: white;
+}
+
+.linkStyle2:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.linkStyle2:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  width: 0; /* set the initial width to zero */
+  height: 1px;
+  background-color: white;
+  transition: width 0.3s; /* add a transition effect to the width property */
+}
+
+.linkStyle2:hover:after {
+  width: 100%; /* set the width to 100% on hover */
+  right: initial; /* set the right property to zero on hover */
+  left: 0; /* reset the left property on hover */
+}
+
+.color {
+  background-color: #f7f1e8;
+}
+
+/* start of the navbar top */
+#logoNavbar2 {
+  display: none !important;
+}
+
+#searchNavbar2 {
+  display: none !important;
+}
+
+#shopNavbar {
+  display: none !important;
+}
+
+#recipesMenu,
+#searchMenu1,
+#searchMenu2 {
+  margin-top: -60px;
+}
+
+#searchMenu1 > div > div,
+#searchMenu2 > div > div {
+  height: 50px;
+}
+
+#recipesMenu > div > div {
+  height: 400px;
+}
+#recipesMenu img {
+  height: 350px;
+}
+/* end of the navbar top */
+/* start of the cocktails recipes */
+
+#cRecepies * {
+  margin: 15px;
+}
+
+#cRecepies p {
+  word-wrap: break-word;
+  width: 430px;
+}
+
+/* end of the cocktail recepies */
+/* start of the owl carousel of random items */
+.owlDiv {
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 4px;
+}
+
+.owlDiv img,
+.articles img {
+  object-fit: cover;
+  height: 480px;
+  width: 100%;
+}
+/* end of the owl carousel of random items */
+/* start of the food section */
+.foodCard {
+  height: 800px;
+  object-fit: cover;
+}
+.foods img {
+  height: 600px;
+}
+/* end of the food section */
+/* start of the book section */
+.bookImg {
+  height: 600px;
+}
+
+.bookImg img {
+  height: 100%;
+}
+
+.bookDesc > div {
+  margin-bottom: 60px;
+}
+
+.bookDesc p {
+  padding-right: 60px;
+}
+
+.bookDesc > div > * {
+  margin: 30px;
+}
+/* end of the book section */
+/* start of the alcohol free section */
+.alcoholFreeInfo,
+.alcoholFreeImg {
+  height: 700px;
+  padding: 0 !important;
+}
+
+.alcoholFreeImg img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.alcoholFreeInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgb(59, 78, 76);
+  color: white;
+}
+
+.afiSpace {
+  margin: 15px 35px;
+}
+
+.alcoholFreeInfo1 {
+  margin-top: 50px;
+}
+
+.alcoholFreeInfo1 hr {
+  padding-right: 200%;
+  height: 2px;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  opacity: 0.9 !important;
+}
+
+.alcoholFreeInfo2 {
+  margin-bottom: 50px;
+}
+/* end of the alcohol free section */
+/* start of the article section */
+.articles > * {
+  margin-bottom: 15px;
+}
+
+.articles h5 {
+  margin-bottom: 50px;
+}
+
+.articles img {
+  object-fit: cover;
+  height: 400px;
+  width: 100%;
+}
+
+.articles hr {
+  background-color: rgb(0, 0, 0) !important;
+  color: rgb(0, 0, 0) !important;
+  border: solid 1px rgb(0, 0, 0) !important;
+  height: 1px !important;
+  width: 100% !important;
+  opacity: 0.6 !important;
+}
+
+.articlesWidth {
+  width: 28% !important;
+}
+.articlesWidth2 {
+  width: 13% !important;
+}
+
+.articleTitle {
+  margin-bottom: 20px;
+}
+/* end of the article section */
+/* start of the video section */
+.noPM {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.videoSec1 {
+  background-color: black;
+}
+.videoSec1 a,
+.videoSec3 a {
+  color: white;
+}
+
+.videoSec1 a:hover,
+.videoSec3 a:hover {
+  color: white;
+}
+.videoSec1 > * {
+  margin-bottom: 30px;
+  color: white;
+}
+
+.videoSec1 {
+  padding: 50px 0;
+}
+.videoLinks > * {
+  margin: 0 15px;
+}
+
+.videoSec3 > div > * {
+  height: 550px;
+}
+
+.videoSec3 img {
+  height: 550px;
+  width: 100%;
+}
+
+.videosec3-1 > div > * {
+  padding: 0 30px;
+}
+
+.videosec3-1 {
+  background-color: black;
+}
+/* end of the video section */
+/* start of the subscribe section */
+#subscribeSec img {
+  height: 300px;
+  width: 100%;
+  filter: brightness(60%);
+  object-fit: cover;
+}
+#subscribeSec input {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: rgb(0, 0, 0);
+}
+
+#subscribeInput * {
+  margin: 15px 0;
+}
+#subscribeInput p {
+  padding-right: 50px;
+}
+
+/* end of the subscribe section */
+/* start of single cocktail item */
+#sc-1 > div > div {
+  height: 700px;
+}
+
+#sc-1 > div > div > div {
+  height: 500px;
+  width: 400px;
+}
+
+#sc-1 > div > div img {
+  height: 300px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.sc-2P {
+  word-wrap: break-word;
+  width: 430px;
+}
+
+.tool_icon {
+  width: 90px;
+  height: 50px;
+}
+
+#sc-3 img {
+  height: 900px;
+}
+/* end of single cocktail item  */
+/* start of videos section */
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container img {
+  display: block;
+  max-width: 100%;
+}
+
+.image-container .icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  color: white;
+}
+/* end of videos section */
+/* start of single article section */
+#article-main > div {
+  height: 950px;
+}
+/* end of single article section */
+/* start of all articles */
+.all-articles {
+  height: 650px;
+}
+
+.all-articles img {
+  height: 450px;
+}
+/* end of all articles */
+
+.similar-book {
+  height: 75% !important;
+}
+
+.navbar .megamenu {
+  padding: 1rem;
+}
+
+@media all and (min-width: 963px) {
+  .navbar .has-megamenu {
+    position: static !important;
+  }
+  .navbar .megamenu {
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 963px) {
+  .navbar.fixed-top .navbar-collapse,
+  .navbar.sticky-top .navbar-collapse {
+    overflow-y: auto;
+    max-height: 90vh;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 963px) {
+  #navbarTop,
+  #logoNavbar1,
+  #searchNavbar1 {
+    display: none !important;
+  }
+  #menuNavbar,
+  #searchMenu2 {
+    width: 100% !important;
+  }
+  #logoNavbar2 img {
+    width: 200px !important;
+  }
+  #searchNavbar2,
+  #shopNavbar,
+  #logoNavbar2 {
+    display: block !important;
+  }
+  .hide {
+    display: none;
+  }
+  #recipesMenu {
+    margin-top: 0px;
+  }
+  #recipesMenu > div > div,
+  #recipesMenu img {
+    height: 200px;
+  }
+
+  .owlDiv,
+  .owlDiv img {
+    height: 290px;
+  }
+  #cRecepies p {
+    width: 200px;
+  }
+  .afiSpace {
+    margin: 10px 20px;
+  }
+  .articles img {
+    object-fit: cover;
+    height: 250px;
+    width: 100%;
+  }
+  .articlesWidth {
+    width: 50% !important;
+  }
+  .articlesWidth2 {
+    width: 50% !important;
+  }
+  .videoSec3 > div > * {
+    height: 300px;
+  }
+
+  .videoSec3 img {
+    height: 300px;
+    width: 100%;
+  }
+  .videoText {
+    display: none !important;
+  }
+  #footer div {
+    margin: 10px 0;
+  }
+  /* start of single item small page */
+  #sc-3 img {
+    height: 500px;
+  }
+  /* end of single item small page */
+  /* start of videos small page */
+  .image-container .icon {
+    font-size: 25px;
+  }
+  .video-title {
+    font-size: 15px;
+  }
+  /* end of videos small page */
+  /* start of single article section */
+  #article-main > div {
+    height: 550px;
+  }
+  .foods img {
+    height: 300px;
+  }
+  .sc-2P {
+    width: 300px;
+  }
+  /* end of single article section */
+  .all-articles {
+    height: 450px;
+  }
+
+  .all-articles img {
+    height: 250px;
+  }
+  .hide-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: small;
+  }
+  .similar-book {
+    height: 100% !important;
+  }
+}

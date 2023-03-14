@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+
+<!-- start of the subscribe section -->
+<div class="container-fluid padd margBot" id="subscribeSec">
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <div class="card">
+        <img src="../../static/media/subscribe.jpg" class="card-img" alt="subscribe" />
+        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
+          <h2 class="card-title text-light">Join the newsletter</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 d-flex flex-column justify-content-center" id="subscribeInput">
+      {% if messages %}
+        {% for message in messages %}
+        <p class="text-danger">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+      <form method="post" action="{% url 'subscribe' %}" class="d-flex flex-column justify-content-center align-items-start">
+        <p>Why? To stay on the lookout for our new recipes and discover new Quebec alcohols first.</p>
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Enter your email" size="40" required />
+        <button type="submit" class="btn linkStyle p-0">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- end of the subscribe section -->
+<!-- start of the footer -->
+<div class="container-fluid padd mb-4" id="footer">
+  <div class="row">
+    <div class="col-12 col-lg-5 px-0">
+      <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'media/logo.png' %}" alt="logo" /></a>
+    </div>
+    <div class="col-12 col-lg-7">
+      <div class="row">
+        <div class="col-4">
+          <div class="py-2">
+            <a href="{% url 'cocktails' %}" class="linkStyle">Recipes - To drink</a>
+          </div>
+          <div class="py-2">
+            <a href="{% url 'foods' %}" class="linkStyle">Recipes - To eat</a>
+          </div>
+          <div class="py-2">
+            <a href="{% url 'videos' %}" class="linkStyle">Videos</a>
+          </div>
+          <div class="py-2">
+            <a href="{% url 'articles' %}" class="linkStyle">To read</a>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="py-2">
+            <a href="" class="linkStyle">In regards to</a>
+          </div>
+          <div class="py-2">
+            <a href="{% url 'book' name='Drink Quebec' %}" class="linkStyle">Book - Drink Quebec</a>
+          </div>
+          <div class="py-2">
+            <a href="{% url 'book' name='Aperitif in Quebec' %}" class="linkStyle">Book - Aperitif in Quebec</a>
+          </div>
+          <div class="py-2">
+            <a href="" class="linkStyle">Services</a>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="py-2">
+            <a href="" class="linkStyle">Contact</a>
+          </div>
+          <div class="py-2">
+            <a href="" class="linkStyle">Terms of use</a>
+          </div>
+          <div class="py-2">
+            <a href="" class="linkStyle">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>All rights reserved. © 2023 - 1 or 2 Cocktails</p>
+    </div>
+    <div class="col-12">
+      <hr />
+    </div>
+    <div class="col-12 d-flex justify-content-between">
+      <p>Credits</p>
+      <div class="social-icons">
+        <a href="https://www.youtube.com/channel/UC3w14ld4eqhtwZM4W1LMTFQ" target="_blank" class="px-3 h6 text-dark"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.facebook.com/1ou2cocktails/" target="_blank" class="px-3 h6 text-dark"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/1ou2cocktails/" target="_blank" class="px-3 h6 text-dark"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.pinterest.com/1ou2Cocktails/" target="_blank" class="px-3 h6 text-dark"><i class="fa-brands fa-pinterest-p"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of the footer -->

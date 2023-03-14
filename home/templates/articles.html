@@ -1,0 +1,38 @@
+{% extends 'index.html' %} 
+{% block title %}Articles{% endblock %}
+{% load static %} 
+{% block content %}
+
+<!-- start of the articles title -->
+<div class="container-fuild margBot padd">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="display-2">Articles to read</h1>
+    </div>
+  </div>
+</div>
+<!-- end of the aricles title -->
+<!-- start of the articles section -->
+<div class="container-fluid margBot padd">
+  <div class="row">
+    {% for article in articles %}
+    <div class="col-6 col-lg-3">
+      <div class="all-articles d-flex flex-column align-items-center justify-content-between w-100 my-5 my-lg-0">
+        <div class="w-100">
+          <a href="{% url 'article' name=article.article_title %}">
+            <img src="{{ article.article_image.url }}" class="w-100 object-cover" alt="..." />
+          </a>
+          <h5 class="text-center my-2">{{ article.article_title }}</h5>
+        </div>
+        <div class="d-flex flex-column align-items-center justify-content-between w-100">
+          <a href="{% url 'article' name=article.article_title %}" class="linkStyle">Find out more</a>
+          <hr class="w-100" />
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- end of the articles section -->
+
+{% endblock %}

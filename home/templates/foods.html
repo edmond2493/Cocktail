@@ -1,0 +1,21 @@
+{% extends 'index.html' %} 
+{% block title %}Foods{% endblock %}
+{% load static %} 
+{% block content %}
+
+<!-- start of all foods section -->
+<div class="container-fluid margBot padd">
+    <div class="row">
+      {% for food in foods %}
+      <div class="col-6 col-lg-3 margBot foods">
+        <a href="{% url 'food' name=food.food_name %}" class="text-center">
+          <img src="{{food.food_image1.url}}" alt="..." class="w-100 object-cover" />
+          <h3 class="linkStyle mt-3">{{ food.food_name }}</h3>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+<!-- end of all foods section -->
+
+{% endblock %}

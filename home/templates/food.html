@@ -1,0 +1,106 @@
+{% extends 'index.html' %} 
+{% block title %}Food{% endblock %}
+{% load static %} 
+{% block content %}
+<!-- start of the first section photo 1 description and photo 2  -->
+<div class="container-fluid px-0 mx-0 margBot" id="sc-1">
+  <div class="row px-0 mx-0">
+    <div class="col-12 col-lg-6 px-0 mx-0 d-flex align-items-center justify-content-center color">
+      <div class="row">
+        <div class="col-12 text-center my-2">
+          <a href="{% url 'home' %}" class="linkStyle small">1 or 2 cocktails</a> - <a href="{% url 'foods' %}" class="linkStyle small">Foods</a> -
+          {{single_food.food_name}}
+        </div>
+        <div class="col-12 text-center my-2">
+          <h1>{{single_food.food_name}}</h1>
+        </div>
+        <div class="col-12 d-flex align-items-center justify-content-center my-2">
+          <img src="{{single_food.food_image1.url}}" alt="..." />
+        </div>
+        <!-- <div class="col-12 text-center my-2 d-flex justify-content-center">
+              {% for al in alcohol %} {% if alcohol|length == forloop.counter %}
+              <h5>{{ al }}</h5>
+              {% else %}
+              <h5>{{ al }},&ensp;</h5>
+              {% endif %} {% endfor %}
+            </div> -->
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 px-0 mx-0">
+      <img src="{{single_food.food_image2.url}}" alt="..." class="h-100 w-100 object-cover" />
+    </div>
+  </div>
+</div>
+<!-- end of the first section photo 1 description and photo 2  -->
+<!-- start of description, ingredients, steps and tools -->
+<div class="container-fluid margBot" id="sc-2">
+  <div class="row">
+    <div class="col-12 col-lg-6 d-flex flex-column align-items-center">
+      <h1>{{single_food.food_title}}</h1>
+      <p class="sc-2P">{{single_food.food_description}}</p>
+      <h6>Try it with:</h6>
+      <div class="col-3">
+        <a href="{% url 'cocktail' name=trywith.recipe_name %}" class="text-center">
+          <img src="{{ trywith.recipe_image1.url }}" alt="..." class="w-100" />
+          <h3 class="linkStyle pt-5">{{ trywith.recipe_name }}</h3>
+        </a>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="row">
+        <div class="col-12">
+          <h3>Ingredients</h3>
+          <ul>
+            {% for ingredient in ingredients %}
+            <li class="my-2">{{ ingredient }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <hr class="opacity-100 w-75" />
+      <div class="row">
+        <div class="col-12">
+          <h3>Ingredients</h3>
+          <ol>
+            {% for step in steps %}
+            <li class="my-2">{{ step }}</li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of description, ingredients, steps and tools -->
+<!-- start of the main image 2 -->
+<div class="container-fluid margBot padd" id="sc-3">
+  <div class="row">
+    <div class="col-12">
+      <img src="{{single_food.food_image2.url}}" alt="..." class="w-100 object-cover" />
+    </div>
+  </div>
+</div>
+<!-- end of the main image 2 -->
+<!-- start of the sugestion section -->
+<div class="container-fluid margBot padd">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-between align-items-center padd margBot">
+      <h1>Also to discover</h1>
+      <a href="{% url 'foods' %}" class="linkStyle">All foods</a>
+    </div>
+    <div class="col-12">
+      <div class="row">
+        {% for suggestion in suggestions %}
+        <div class="col-3">
+          <a href="{% url 'food' name=suggestion.food_name %}" class="text-center">
+            <img src="{{ suggestion.food_image1.url }}" alt="..." class="w-100" />
+            <h3 class="linkStyle pt-5">{{ suggestion.food_name }}</h3>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of the sugestion section -->
+{% endblock %}

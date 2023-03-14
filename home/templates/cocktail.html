@@ -1,0 +1,116 @@
+{% extends 'index.html' %} 
+{% block title %}Cocktail{% endblock %}
+{% load static %} 
+{% block content %}
+<!-- start of the first section photo 1 description and photo 2  -->
+<div class="container-fluid px-0 mx-0 margBot" id="sc-1">
+  <div class="row px-0 mx-0">
+    <div class="col-12 col-lg-6 px-0 mx-0 d-flex align-items-center justify-content-center color">
+        <div class="row">
+          <div class="col-12 text-center my-2">
+            <a href="{% url 'home' %}" class="linkStyle small">1 or 2 cocktails</a> - <a href="{% url 'cocktails' %}" class="linkStyle small">Cocktails</a> -
+            {{single_cocktail.recipe_name}}
+          </div>
+          <div class="col-12 text-center my-2">
+            <h1>{{single_cocktail.recipe_name}}</h1>
+          </div>
+          <div class="col-12 d-flex align-items-center justify-content-center my-2">
+            <img src="{{single_cocktail.recipe_image1.url}}" alt="..." />
+          </div>
+          <div class="col-12 text-center my-2 d-flex justify-content-center">
+            {% for al in alcohol %} {% if alcohol|length == forloop.counter %}
+            <h5>{{ al }}</h5>
+            {% else %}
+            <h5>{{ al }},&ensp;</h5>
+            {% endif %} {% endfor %}
+          </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 px-2 px-lg-0 mx-0">
+      <img src="{{single_cocktail.recipe_image2.url}}" alt="..." class="h-100 w-100 object-cover" />
+    </div>
+  </div>
+</div>
+<!-- end of the first section photo 1 description and photo 2  -->
+<!-- start of description, ingredients, steps and tools -->
+<div class="container-fluid margBot" id="sc-2">
+  <div class="row">
+    <div class="col-12 col-lg-6 d-flex flex-column align-items-center">
+      <h1>{{single_cocktail.recipe_title}}</h1>
+      <p class="sc-2P">{{single_cocktail.recipe_description1}}</p>
+      <br />
+      <p class="sc-2P">{{single_cocktail.recipe_description2}}</p>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="row">
+        <div class="col-12">
+          <h3>Ingredients</h3>
+          <ul>
+            <h6 class="mt-4">For 1 glass</h6>
+            {% for ingredient in ingredients %}
+            <li class="my-2">{{ ingredient }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <hr class="opacity-100 w-75" />
+      <div class="row">
+        <div class="col-12">
+          <h3>Ingredients</h3>
+          <ol>
+            {% for step in steps %}
+            <li class="my-2">{{ step }}</li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+      <hr class="opacity-100 w-75" />
+      <div class="row">
+        <div class="col-12 d-flex flex-column">
+          <h3>Tools</h3>
+          <div class="d-flex flex-row">
+            {% for tool in tools %}
+            <div class="tool_icon mx-3 text-center">
+              <img src="{{tool.tool_image.url}}" alt="..." class="h-100" />
+              <p>{{ tool.tool_name }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of description, ingredients, steps and tools -->
+<!-- start of the main image 2 -->
+<div class="container-fluid margBot padd" id="sc-3">
+  <div class="row">
+    <div class="col-12">
+      <img src="{{single_cocktail.recipe_image2.url}}" alt="..." class="w-100 object-cover" />
+    </div>
+  </div>
+</div>
+<!-- end of the main image 2 -->
+<!-- start of the sugestion section -->
+<div class="container-fluid margBot padd">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-between align-items-center padd margBot">
+      <h1>Also to discover</h1>
+      <a href="{% url 'cocktails' %}" class="linkStyle">All recipes</a>
+    </div>
+    <div class="col-12">
+      <div class="row">
+        {% for suggestion in suggestions|slice:"4" %}
+        <div class="col-6 col-lg-3">
+          <a href="{% url 'cocktail' name=suggestion.recipe_name %}" class="text-center">
+            <img src="{{suggestion.recipe_image1.url}}" alt="..." class="w-100" />
+            <h3 class="linkStyle pt-5 hide-text w-100">{{ suggestion.recipe_name }}</h3>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of the sugestion section -->
+{% endblock %}
